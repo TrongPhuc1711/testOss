@@ -1,0 +1,21 @@
+name: Deploy Static to SOMEe
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Deploy via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: trongphuc.somee.com
+        username: TrongPhuc
+        password: Phuc1711@
+        local-dir: ./
+        server-dir: www.trongphuc.somee.com/
